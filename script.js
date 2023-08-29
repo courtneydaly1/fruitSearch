@@ -109,7 +109,7 @@ function searchHandler(e) {
 
 //ISSUES: SHOWS AS BULLET POINTS AND NOT A DROPDOWN. SHOWS EXTRA BULLET POINTS. I DONT KNOW WHAT inputVal IS USED FOR.
 function showSuggestions(results, inputVal) {
-const suggestionsHTML = results.map(val => `<li>${val}<li>`).join('');
+const suggestionsHTML = results.map(val => `<li>${val}<li>`);
 suggestions.innerHTML = suggestionsHTML;
 }
 
