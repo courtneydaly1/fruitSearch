@@ -94,8 +94,7 @@ function search(str) {
     lowerCaseFruit.push(fruit[i].toLowerCase());
   }
   const filteredFruit = lowerCaseFruit.filter((chars) => chars.includes(str));
-  results.push(filteredFruit);
-  showSuggestions(results);
+  showSuggestions(filteredFruit, str);
 }
 
 //Function to handle option selection. User's input is evaluated and scanned through array of fruit.
@@ -108,16 +107,42 @@ function searchHandler(e) {
 
 //ISSUES: Shows as one div... I cannot seem to figure out how to get it toLOOP AND MAKE A NEW DIV EACH TIME.
 //DOES NOT UPDATE WHEN MORE KEYSTROKES ARE MADE. 
+function highlightSearch(word, search){
+  let matchingIdx = word.indexOf(search);
+  let first = word.substring(0, matchingIdx);
+  let second = search;
+  let third = word.substring(matchingIdx + search.length);
+
+  let secondSpan = document.createElement("span");
+  secondSpan.classList.add("boldSearch");
+  secondSpan.textContent = second;
+  let firstSpan = document.createElement("span");
+  firstSpan.textContent = first;
+  let thirdSpan = document.createElement("span");
+  thirdSpan.textContent = third;
+
+  let mainLi = document.createElement("li");
+mainLi.appendChild(firstSpan);
+mainLi.appendChild(secondSpan);
+mainLi.appendChild(thirdSpan);
+  return mainLi;
+}
+
+
 function showSuggestions(results, inputVal) {
- results.forEach((word) => {
+  const listContainer = document.getElementById("fruitOptions");
+  listContainer.replaceChildren();
+  results.forEach((word) => {
 
   if(inputVal === ""){return
   }else{
-  const listContainer = document.getElementById("fruitOptions");
-  const newDiv = document.createElement("DIV");
-	newDiv.textContent = word;
-	newDiv.classList.add("has-suggestions")
-  listContainer.appendChild(newDiv);
+  
+  const newLi = document.createElement("li");
+	newLi.innerHTML = highlightSearch(word, inputVal);
+	newLi.classList.add("has-suggestions");
+
+  listContainer.appendChild(highlightSearch(word, inputVal));
+
  };
 })
 }
