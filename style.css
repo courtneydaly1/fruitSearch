@@ -1,46 +1,66 @@
 * {
-  /* box-sizing: border-box; */
+ box-sizing: border-box; 
 }
 
-:focus {
- /* TODO */
+.has-suggestions:focus {
+  background-color: rgb(232, 66, 6);
+
 }
 
 body {
-  /* TODO */
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(to right, rgb(255, 191, 0), rgb(242, 81, 23))
 }
 
 input {
- /* TODO */
+ position: flex;
+ background-color: rgba(255, 166, 0, 0.695);
+ 
 }
 
 .search-container {
- /* TODO */
+ position: relative;
+ display:block;
 }
 .search-container input,
 .search-container .suggestions {
-  /* TODO */
+  width: 200px;
+  
 }
 .search-container input {
- /* TODO */
+  margin: 20% 45%;
+  padding: 0px;
 }
 .search-container .suggestions {
-   /* TODO */
+ margin: 100px 100px;
+ padding: 0px;
+ width: 200px;
+ list-style: none;
 }
 
 ul {
-  /* TODO */
+
 }
 ul.has-suggestions {
-  /* TODO */
+ margin-top: -275px;
+ margin-left: 260px; 
+ 
+  
+  
 }
 ul li {
   /* TODO */
 }
 ul li:hover {
-  /* TODO */
+
 }
 
-input {
-   /* TODO */
+div.has-suggestions:hover {
+  background-color: rgb(232, 66, 6);
+  cursor:grab;
+  font-weight: bold; 
 }
+
+//ISSUES THE BOXES DO NOT LINE UP AS A LIST. ALSO WHEN I CHANGE MY WINDOW SO DOES THE POSITION. 
+WHY DO I HAVE A 40PX PADDING ON THE LEFT? I CANT GET RID OF IT? 

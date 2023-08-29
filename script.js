@@ -84,8 +84,8 @@ const fruit = [
   "Yuzu",
 ];
 
-// Function to search case insensative string values found in the array, and create a new array.
-
+// Function to search case insensative string values found in the array, and create a new array.Show suggestions and modify as more letters are typed.
+//ISSUES doesnt work when i type uppercase letters. still need to bold letters in str and char from user.
 function search(str) {
   let results = [];
   let lowerCaseFruit = [];
@@ -95,29 +95,38 @@ function search(str) {
   }
   const filteredFruit = lowerCaseFruit.filter((chars) => chars.includes(str));
   results.push(filteredFruit);
-  return results;
+  showSuggestions(results);
 }
 
 //Function to handle option selection. User's input is evaluated and scanned through array of fruit.
 function searchHandler(e) {
-	const inputVal = e.target.value;
-	search(inputVal);
-
-}
+  const inputVal = e.target.value;
+  search(inputVal);
+};
 
 //Function to show suggestions in a drop down menu
 
-//ISSUES: SHOWS AS BULLET POINTS AND NOT A DROPDOWN. SHOWS EXTRA BULLET POINTS. I DONT KNOW WHAT inputVal IS USED FOR.
+//ISSUES: Shows as one div... I cannot seem to figure out how to get it toLOOP AND MAKE A NEW DIV EACH TIME.
+//DOES NOT UPDATE WHEN MORE KEYSTROKES ARE MADE. 
 function showSuggestions(results, inputVal) {
-const suggestionsHTML = results.map(val => `<li>${val}<li>`);
-suggestions.innerHTML = suggestionsHTML;
+ results.forEach((word) => {
+
+  if(inputVal === ""){return
+  }else{
+  const listContainer = document.getElementById("fruitOptions");
+  const newDiv = document.createElement("DIV");
+	newDiv.textContent = word;
+	newDiv.classList.add("has-suggestions")
+  listContainer.appendChild(newDiv);
+ };
+})
 }
 
-//Function to populate the Search box with wanted fruit option.
-function useSuggestion(e) {
-	const clickedOption = e.target.textcontent;
 
-  
+//Function to populate the Search box with wanted fruit option and clear list of choices.
+//ISSUES: currently since I cant put them into their own div it populates with alll the words.
+function useSuggestion(e) {
+  input.value = e.target.innerHTML;
 }
 
 //Event listener when a key is typed to begin the search.
@@ -125,3 +134,5 @@ input.addEventListener("keyup", searchHandler);
 
 //Event listener to allow user to pick a fruit from dropdown options, and clears the list.
 suggestions.addEventListener("click", useSuggestion);
+
+
