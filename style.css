@@ -49,6 +49,7 @@ ul {
   list-style-type: none;
   padding: 0px;
   margin: 0px;
+  width: 207px;
 }
 ul.has-suggestions {
  
@@ -60,11 +61,11 @@ ul li {
   border: 1px solid /* TODO */
 }
 ul li:hover {
-
+  background-color: rgb(232, 66, 6);
 }
 
-div.has-suggestions:hover {
-  background-color: rgb(232, 66, 6);
+ul:hover {
+
   cursor:grab;
   font-weight: bold; 
 }

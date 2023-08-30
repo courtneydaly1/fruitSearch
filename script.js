@@ -103,10 +103,9 @@ function searchHandler(e) {
   search(inputVal);
 };
 
-//Function to show suggestions in a drop down menu
 
-//ISSUES: Shows as one div... I cannot seem to figure out how to get it toLOOP AND MAKE A NEW DIV EACH TIME.
-//DOES NOT UPDATE WHEN MORE KEYSTROKES ARE MADE. 
+//highlights parts of word from user's typed str
+
 function highlightSearch(word, search){
   let matchingIdx = word.indexOf(search);
   let first = word.substring(0, matchingIdx);
@@ -128,10 +127,10 @@ mainLi.appendChild(thirdSpan);
   return mainLi;
 }
 
-
+//Function to show suggestions in a drop down menu
 function showSuggestions(results, inputVal) {
   const listContainer = document.getElementById("fruitOptions");
-  listContainer.replaceChildren();
+  listContainer.replaceChildren(); //Clears old list 
   results.forEach((word) => {
 
   if(inputVal === ""){return
@@ -141,7 +140,7 @@ function showSuggestions(results, inputVal) {
 	newLi.innerHTML = highlightSearch(word, inputVal);
 	newLi.classList.add("has-suggestions");
 
-  listContainer.appendChild(highlightSearch(word, inputVal));
+  listContainer.appendChild(highlightSearch(word, inputVal)); //highlights search chars
 
  };
 })
@@ -149,9 +148,9 @@ function showSuggestions(results, inputVal) {
 
 
 //Function to populate the Search box with wanted fruit option and clear list of choices.
-//ISSUES: currently since I cant put them into their own div it populates with alll the words.
+//ISSUES: due to the spans it wil not put in chosen word
 function useSuggestion(e) {
-  input.value = e.target.innerHTML;
+  input.value = e.target.value;
 }
 
 //Event listener when a key is typed to begin the search.
