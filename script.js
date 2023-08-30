@@ -148,10 +148,19 @@ function showSuggestions(results, inputVal) {
 
 
 //Function to populate the Search box with wanted fruit option and clear list of choices.
-//ISSUES: due to the spans it wil not put in chosen word
+//ISSUES: due to the spans it will not put in chosen word
 function useSuggestion(e) {
-  input.value = e.target.value;
+  //input.value = e.target.value
+const liElements = document.querySelectorAll("#fruitOptions");
+liElements.forEach(li => {
+  const spans = li.getElementsByTagName('li');
+  const values = Array.from(spans).map(span => span.textContent).join('');
+  input.value = e.target.values;
+});
+
+
 }
+
 
 //Event listener when a key is typed to begin the search.
 input.addEventListener("keyup", searchHandler);

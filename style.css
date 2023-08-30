@@ -23,7 +23,7 @@ input {
 }
 .search-container {
  position: relative;
- top: 20%;
+ top: 35%;
  left: 40%;
  display:block;
 
@@ -35,13 +35,13 @@ input {
   
 }
 .search-container input {
-  /* margin: 20% 45%; */
-  /* padding: 0px; */
+ 
 }
 .search-container .suggestions {
 
  padding: 0px;
  width: 200px;
+
  
 }
 
