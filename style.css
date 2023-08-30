@@ -41,6 +41,7 @@ input {
 
  padding: 0px;
  width: 200px;
+ font-family:Arial, Helvetica, sans-serif;
 
  
 }
@@ -62,13 +63,12 @@ ul li {
 }
 ul li:hover {
   background-color: rgb(232, 66, 6);
+  font-weight: bold;
 }
 
 ul:hover {
 
   cursor:grab;
-  font-weight: bold; 
+  
 }
 
-//ISSUES THE BOXES DO NOT LINE UP AS A LIST. ALSO WHEN I CHANGE MY WINDOW SO DOES THE POSITION. 
-WHY DO I HAVE A 40PX PADDING ON THE LEFT? I CANT GET RID OF IT? 
