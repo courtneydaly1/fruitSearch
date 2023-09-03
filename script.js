@@ -148,7 +148,7 @@ function showSuggestions(results, inputVal) {
 
 
 //Function to populate the Search box with wanted fruit option and clear list of choices.
-//ISSUES: due to the spans it will not put in chosen word. It will now put in the first word, not the clicked word
+
 function useSuggestion(e) {
 const clickedFruit = e.target
 const parentLi = clickedFruit.closest('li');
@@ -157,9 +157,9 @@ const listArray = Array.from(list);
 
 
   input.value = parentLi.innerText;
-  listArray.forEach((el)=>{
-    el.remove();
-  });
+  // listArray.forEach((el)=>{
+  //   el.remove();
+  // })
 };
 
 
