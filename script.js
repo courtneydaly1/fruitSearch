@@ -152,8 +152,14 @@ function showSuggestions(results, inputVal) {
 function useSuggestion(e) {
 const clickedFruit = e.target
 const parentLi = clickedFruit.closest('li');
+const list= document.getElementsByClassName("suggestions")
+const listArray = Array.from(list);
 
-  input.value = parentLi.innerText
+
+  input.value = parentLi.innerText;
+  listArray.forEach((el)=>{
+    el.remove();
+  });
 };
 
 
