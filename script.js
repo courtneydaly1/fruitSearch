@@ -151,12 +151,9 @@ function showSuggestions(results, inputVal) {
 //ISSUES: due to the spans it will not put in chosen word. It will now put in the first word, not the clicked word
 function useSuggestion(e) {
 const clickedFruit = e.target
-const liElements = document.querySelector("li");
-const chosenFruit = $('span').text()
-// liElements.forEach(li => {
-//   const spans = li.getElementsByTagName('li');
-//   const values = Array.from(spans).map(span => span.textContent).join('');
-  input.value = liElements.innerText
+const parentLi = clickedFruit.closest('li');
+
+  input.value = parentLi.innerText
 };
 
 
