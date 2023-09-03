@@ -152,6 +152,7 @@ function showSuggestions(results, inputVal) {
 function useSuggestion(e) {
 const clickedFruit = e.target
 const liElements = document.querySelector("li");
+const chosenFruit = $('span').text()
 // liElements.forEach(li => {
 //   const spans = li.getElementsByTagName('li');
 //   const values = Array.from(spans).map(span => span.textContent).join('');
