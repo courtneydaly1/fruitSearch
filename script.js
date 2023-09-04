@@ -84,6 +84,8 @@ const fruit = [
   "Yuzu",
 ];
 
+const searchList = [...fruit]; 
+
 // Function to search case insensative string values found in the array, and create a new array.Show suggestions and modify as more letters are typed.
 //ISSUES doesnt work when i type uppercase letters. still need to bold letters in str and char from user.
 function search(str) {
@@ -152,14 +154,13 @@ function showSuggestions(results, inputVal) {
 function useSuggestion(e) {
 const clickedFruit = e.target
 const parentLi = clickedFruit.closest('li');
-const list= document.getElementsByClassName("suggestions")
-const listArray = Array.from(list);
+const list= document.getElementById("fruitOptions")
+// const listArray = Array.from(list);
 
 
   input.value = parentLi.innerText;
-  // listArray.forEach((el)=>{
-  //   el.remove();
-  // })
+  list.innerHTML= '';
+  
 };
 
 
