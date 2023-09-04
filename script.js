@@ -84,10 +84,10 @@ const fruit = [
   "Yuzu",
 ];
 
-const searchList = [...fruit]; 
+
 
 // Function to search case insensative string values found in the array, and create a new array.Show suggestions and modify as more letters are typed.
-//ISSUES doesnt work when i type uppercase letters. still need to bold letters in str and char from user.
+//ISSUES doesnt work when I type uppercase letters.
 function search(str) {
   let results = [];
   let lowerCaseFruit = [];
@@ -103,12 +103,11 @@ function search(str) {
 function searchHandler(e) {
   const inputVal = e.target.value;
   search(inputVal);
-};
-
+}
 
 //highlights parts of word from user's typed str
 
-function highlightSearch(word, search){
+function highlightSearch(word, search) {
   let matchingIdx = word.indexOf(search);
   let first = word.substring(0, matchingIdx);
   let second = search;
@@ -123,54 +122,42 @@ function highlightSearch(word, search){
   thirdSpan.textContent = third;
 
   let mainLi = document.createElement("li");
-mainLi.appendChild(firstSpan);
-mainLi.appendChild(secondSpan);
-mainLi.appendChild(thirdSpan);
+  mainLi.appendChild(firstSpan);
+  mainLi.appendChild(secondSpan);
+  mainLi.appendChild(thirdSpan);
   return mainLi;
 }
 
 //Function to show suggestions in a drop down menu
 function showSuggestions(results, inputVal) {
   const listContainer = document.getElementById("fruitOptions");
-  listContainer.replaceChildren(); //Clears old list 
+  listContainer.replaceChildren(); //Clears old list
   results.forEach((word) => {
+    if (inputVal === "") {
+      return;
+    } else {
+      const newLi = document.createElement("li");
+      newLi.innerHTML = highlightSearch(word, inputVal);
+      newLi.classList.add("has-suggestions");
 
-  if(inputVal === ""){return
-  }else{
-  
-  const newLi = document.createElement("li");
-	newLi.innerHTML = highlightSearch(word, inputVal);
-	newLi.classList.add("has-suggestions");
-
-  listContainer.appendChild(highlightSearch(word, inputVal)); //highlights search chars
-
- };
-})
+      listContainer.appendChild(highlightSearch(word, inputVal)); //highlights search chars
+    }
+  });
 }
-
 
 //Function to populate the Search box with wanted fruit option and clear list of choices.
 
 function useSuggestion(e) {
-const clickedFruit = e.target
-const parentLi = clickedFruit.closest('li');
-const list= document.getElementById("fruitOptions")
-// const listArray = Array.from(list);
-
+  const clickedFruit = e.target;
+  const parentLi = clickedFruit.closest("li");
+  const list = document.getElementById("fruitOptions");
 
   input.value = parentLi.innerText;
-  list.innerHTML= '';
-  
-};
-
-
-
-
+  list.innerHTML = "";
+}
 
 //Event listener when a key is typed to begin the search.
 input.addEventListener("keyup", searchHandler);
 
 //Event listener to allow user to pick a fruit from dropdown options, and clears the list.
 suggestions.addEventListener("click", useSuggestion);
-
-
